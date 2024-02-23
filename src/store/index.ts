@@ -14,6 +14,7 @@ const persistedReducer = persistReducer(persistConfig, reducer);
 const store = configureStore({
   reducer: persistedReducer,
 });
+const useDispatch = () => store.dispatch;
 
 const persistor = persistStore(store);
 
@@ -23,4 +24,4 @@ declare module "react-redux" {
   interface DefaultRootState extends RootState {}
 }
 
-export { store, persistor };
+export { store, persistor, useDispatch };

@@ -1,3 +1,4 @@
 export type ItemsApiResponse<T extends object> = {
-  data: T[];
+  items: T;
+  totalCount: number;
 };
