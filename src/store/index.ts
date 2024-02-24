@@ -24,4 +24,8 @@ declare module "react-redux" {
   interface DefaultRootState extends RootState {}
 }
 
+declare global{
+  type RootState = ReturnType<typeof reducer>;
+}
+
 export { store, persistor, useDispatch };

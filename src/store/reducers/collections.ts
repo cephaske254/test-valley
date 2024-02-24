@@ -18,7 +18,10 @@ const slice = createSlice({
         state.loading = true;
       })
       .addCase(reduxGetCollections.fulfilled, (state, action) => {
-        state.collections = action.payload.items;
+        state.collections = action.payload.items.filter(
+          (collection) =>
+            collection.type == "SINGLE" && collection.viewType == "TILE"
+        );
         state.totalCount = action.payload.totalCount;
         state.loading = false;
       })

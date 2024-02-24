@@ -4,5 +4,5 @@ import { ItemsApiResponse } from "@/@types/api";
 
 export const apiGetCollections = () =>
   api
-    .get<ItemsApiResponse<Collection[]>>("main-shortcut/all?prearrangedDiscount")
+    .get<ItemsApiResponse<Collection[]>>("collections?prearrangedDiscount")
     .then((a) => a.data);

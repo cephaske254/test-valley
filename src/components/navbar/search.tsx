@@ -44,7 +44,7 @@ const NavbarSearch = () => {
                   <IconButton
                     disableRipple
                     disableFocusRipple
-                    sx={{ color: "gray.700" }}
+                    sx={{ color: "grey.700" }}
                     onClick={props.onClear as any}
                   >
                     <SearchClearIconWrapper>

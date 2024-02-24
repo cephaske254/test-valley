@@ -1,5 +1,20 @@
+import PageContainer from "@/components/page-container";
 import DefaultLayout from "@/layouts/default";
 
+import CollectionsSection from "@/sections/collections";
+import ShortcutsSection from "@/sections/shortcuts";
+import TopCarouselSection from "@/sections/top-carousel";
+
 export default function Home() {
-  return <DefaultLayout>Hello World</DefaultLayout>;
+  return (
+    <DefaultLayout>
+      <TopCarouselSection />
+
+      <PageContainer>
+        <ShortcutsSection />
+
+        <CollectionsSection />
+      </PageContainer>
+    </DefaultLayout>
+  );
 }
