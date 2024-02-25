@@ -24,8 +24,8 @@ type SliderControlsState = {
 type SliderControlsProps = {
   swiperElRef: React.MutableRefObject<SwiperRef | null>;
 };
-const SliderControls = forwardRef<SliderControlsRef, SliderControlsProps>(
-  ({ swiperElRef }, ref) => {
+const SliderControls = memo(
+  forwardRef<SliderControlsRef, SliderControlsProps>(({ swiperElRef }, ref) => {
     const isTablet = useResponsive("up", "md");
 
     const [state, setState] = useState<SliderControlsState>({
@@ -73,12 +73,12 @@ const SliderControls = forwardRef<SliderControlsRef, SliderControlsProps>(
         </ButtonGroup>
       );
 
-    return <Box height={20}/>
-  }
+    return <Box height={20} />;
+  })
 );
 
 export type SliderControlsRef = {
   recalculate: (slide: SwiperClass) => void;
 };
 
-export default memo(SliderControls);
+export default SliderControls;
