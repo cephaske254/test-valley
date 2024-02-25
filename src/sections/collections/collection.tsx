@@ -93,7 +93,6 @@ const CollectionStack: React.FC<CollectionStackProps> = ({
           autoplay={{
             delay: 2000 + index * 1000,
             disableOnInteraction: true,
-            reverseDirection: true,
           }}
           speed={500}
           onProgress={onProgress}

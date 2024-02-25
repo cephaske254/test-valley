@@ -9,7 +9,18 @@ const ShortcutsSection = () => {
   const { shortcuts } = useSelector(selectShortcuts);
 
   return (
-    <Stack direction="row" spacing={3} flexWrap='nowrap' overflow='scroll'>
+    <Stack
+      mt={6}
+      mb={10}
+      direction="row"
+      spacing={1.5}
+      flexWrap={{ xs: "wrap", lg: "nowrap" }}
+      justifyContent={{
+        xs: "space-evenly",
+        sm: "flex-start",
+        lg: "space-between",
+      }}
+    >
       {shortcuts.map((shortcut) => {
         return (
           <ShortcutCard key={shortcut.mainShortcutId} shortcut={shortcut} />

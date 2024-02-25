@@ -6,7 +6,7 @@ import { IMAGE_SIZE } from "./constants";
 const ShortcutCard: React.FC<Props> = ({ shortcut }) => {
   return (
     <Box
-      p={2}
+      p={1}
       sx={{
         userSelect: "none",
       }}

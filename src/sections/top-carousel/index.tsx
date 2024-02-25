@@ -67,7 +67,7 @@ const TopCarouselSection = () => {
         slideActiveClass="swiper-slide-active"
         slideClass="swiper-slide"
       >
-        {!isDesktop && <SliderNavigation />}
+        {isDesktop && <SliderNavigation />}
 
         {banners.map((banner, index) => (
           <SwiperSlide key={index}>
