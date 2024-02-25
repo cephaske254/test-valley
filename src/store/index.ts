@@ -14,7 +14,6 @@ const persistedReducer = persistReducer(persistConfig, reducer);
 const store = configureStore({
   reducer: persistedReducer,
 });
-const useDispatch = () => store.dispatch;
 
 const persistor = persistStore(store);
 
@@ -28,4 +27,4 @@ declare global{
   type RootState = ReturnType<typeof reducer>;
 }
 
-export { store, persistor, useDispatch };
+export { store, persistor };

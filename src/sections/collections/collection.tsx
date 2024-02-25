@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef } from "react";
 import { Collection } from "@/@types/collection";
 
 import Stack from "@mui/material/Stack";
@@ -7,8 +7,9 @@ import Typography from "@mui/material/Typography";
 
 import CollectionItem from "./item";
 import { Swiper, SwiperClass, SwiperSlide, SwiperRef } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Grid } from "swiper/modules";
 import SliderControls, { SliderControlsRef } from "./controls";
+import { SwiperOptions } from "swiper/types";
 
 const CollectionStack: React.FC<CollectionStackProps> = ({
   collection,
@@ -25,17 +26,31 @@ const CollectionStack: React.FC<CollectionStackProps> = ({
     controlsRef?.current?.recalculate(swiper);
   }, []);
 
-  const breakpoints = useMemo(
+  const breakpoints = useMemo<SwiperOptions["breakpoints"]>(
     () => ({
       0: {
+        enabled: false,
         slidesPerView: 2,
-        slidesPerGroup: Math.round(collection.items.length / 2),
+        grid: {
+          fill: "row",
+          rows: Math.ceil(collection.items.length / 2),
+        },
       },
       768: {
+        enabled: true,
         slidesPerView: 3,
+        grid: {
+          fill: "column",
+          rows: 1,
+        },
       },
       1024: {
+        enabled: true,
         slidesPerView: 4,
+        grid: {
+          fill: "column",
+          rows: 1,
+        },
       },
     }),
     [collection.items.length]
@@ -74,14 +89,11 @@ const CollectionStack: React.FC<CollectionStackProps> = ({
           breakpoints={breakpoints}
           spaceBetween={8}
           ref={swiperElRef}
-          modules={[Autoplay]}
+          modules={[Grid, Autoplay]}
           autoplay={{
             delay: 2000 + index * 1000,
             disableOnInteraction: true,
             reverseDirection: true,
-          }}
-          grid={{
-            fill: "column",
           }}
           speed={500}
           onProgress={onProgress}

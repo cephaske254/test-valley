@@ -9,9 +9,11 @@ import { SwiperClass, SwiperRef } from "swiper/react";
 
 import ButtonGroup from "@mui/material/ButtonGroup";
 import IconButton from "@mui/material/IconButton";
+import Box from "@mui/material/Box";
 
 import ChevronLeftRounded from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRounded from "@mui/icons-material/ChevronRightRounded";
+import useResponsive from "@/hooks/useResponsive";
 
 type SliderControlsState = {
   canSlideNext: boolean;
@@ -24,6 +26,8 @@ type SliderControlsProps = {
 };
 const SliderControls = forwardRef<SliderControlsRef, SliderControlsProps>(
   ({ swiperElRef }, ref) => {
+    const isTablet = useResponsive("up", "md");
+
     const [state, setState] = useState<SliderControlsState>({
       canSlideNext: false,
       canSlidePrev: false,
@@ -57,16 +61,19 @@ const SliderControls = forwardRef<SliderControlsRef, SliderControlsProps>(
       evaluateProgress,
     ]);
 
-    return (
-      <ButtonGroup>
-        <IconButton onClick={slidePrev} disabled={!state.canSlidePrev}>
-          <ChevronLeftRounded />
-        </IconButton>
-        <IconButton onClick={slideNext} disabled={!state.canSlideNext}>
-          <ChevronRightRounded />
-        </IconButton>
-      </ButtonGroup>
-    );
+    if (isTablet)
+      return (
+        <ButtonGroup>
+          <IconButton onClick={slidePrev} disabled={!state.canSlidePrev}>
+            <ChevronLeftRounded />
+          </IconButton>
+          <IconButton onClick={slideNext} disabled={!state.canSlideNext}>
+            <ChevronRightRounded />
+          </IconButton>
+        </ButtonGroup>
+      );
+
+    return <Box height={20}/>
   }
 );
 
