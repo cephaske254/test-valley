@@ -10,7 +10,7 @@ export default function Home() {
     <DefaultLayout>
       <TopCarouselSection />
 
-      <PageContainer>
+      <PageContainer sx={{ pb: 8 }}>
         <ShortcutsSection />
 
         <CollectionsSection />
