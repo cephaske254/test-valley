@@ -31,8 +31,3 @@ body {
   src: url("/fonts/pretendard/PretendardStd-Regular.woff2");
   font-weight: 400;
 }
-@font-face {
-  font-family: "Pretendard";
-  src: url("/fonts/pretendard/PretendardStd-Light.woff2");
-  font-weight: 300;
-}
