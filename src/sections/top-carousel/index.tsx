@@ -38,7 +38,7 @@ const RootStyles = styled(Box)({
 
 const TopCarouselSection = () => {
   const { banners } = useSelector(selectBanners);
-  const isDesktop = useResponsive("up", "lg");
+  const isMobile = useResponsive("down", "lg");
 
   const theme = useTheme();
 
@@ -67,11 +67,11 @@ const TopCarouselSection = () => {
         slideActiveClass="swiper-slide-active"
         slideClass="swiper-slide"
       >
-        {isDesktop && <SliderNavigation />}
+        {!isMobile && <SliderNavigation />}
 
         {banners.map((banner, index) => (
           <SwiperSlide key={index}>
-            <CarouselSlide isMobile={!isDesktop} banner={banner} />
+            <CarouselSlide isMobile={isMobile} banner={banner} />
           </SwiperSlide>
         ))}
       </Swiper>
